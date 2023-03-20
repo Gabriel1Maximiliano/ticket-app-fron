@@ -10,7 +10,7 @@ import { Layout, Menu, theme } from 'antd';
 const {  Sider, Content } = Layout;
 
 export const RouterPages:React.FC  = ( props:any ):ReturnType<React.FC> => {
-  return (
+  return ( 
 
   <Layout style={{ height:'100vh' }} >
         <Sider >
