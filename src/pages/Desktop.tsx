@@ -1,25 +1,43 @@
 import { CloseCircleOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import { Button, Col, Divider, Row,Typography } from 'antd'
+import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { getUserStorage } from '../helpers';
+import { useHideMenu } from '../hooks/useHideMenu';
 
 
 const { Text, Title } = Typography;
 
 export const Desktop = () => {
 
+  useHideMenu( { hide:false } );
+
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState<any>( getUserStorage() );
+  
+  if( !user.agente || !user.escritorio ){
+
+    return <Navigate to="get-into" replace={true} />
+  }
+
   const handleNextTicket =()=>{
     console.log('siguiente ticket')
   }
 
   const handleExit = ()=>{
-    console.log('salir')
+    console.log('entre al salir')
+    localStorage.clear();
+    navigate('desktop')
+
   }
   return (
     <>
     <Row>
       <Col span={ 20 } >
-        <Title>Gabriel</Title>
+        <Title>{ user.agente }</Title>
         <Text>Estás trabajando en el escritorio </Text>
-        <Text type='success' >5</Text>
+        <Text type='success' >{ user.escritorio }</Text>
       </Col>
 
       <Col span={ 4 } >

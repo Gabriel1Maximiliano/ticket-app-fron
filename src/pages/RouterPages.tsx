@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { UploadOutlined, UserOutlined,VideoCameraOutlined,} from '@ant-design/icons';
 import { Layout, Menu,theme  } from 'antd';
 
@@ -9,14 +9,16 @@ import { GetInto } from './GetInto';
 import { Queue } from './Queue';
 import { CreateTicket } from './CreateTicket';
 import { Desktop } from './Desktop';
+import { UIContext } from '../context/UIContext';
 
 
 
-export const RouterPages:React.FC<any>  = ( props:any ):ReturnType<React.FC > => {
+export const RouterPages:React.FC<any>  = ( props:any ):ReturnType<React.FC> => {
 
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const { token: { colorBgContainer } } = theme.useToken();
+
+  const  { hideMenu } = useContext( UIContext );
+
   return ( 
 
 
@@ -24,6 +26,7 @@ export const RouterPages:React.FC<any>  = ( props:any ):ReturnType<React.FC > =>
     <Sider 
     breakpoint='md'
      collapsedWidth="0"
+     hidden={ hideMenu }
      >
       <div className="logo" />
       <Menu

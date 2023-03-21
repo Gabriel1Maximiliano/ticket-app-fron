@@ -4,9 +4,9 @@ import {TicketApp }from './TicketApp'
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+   <React.StrictMode>
     <BrowserRouter>
       <TicketApp />
     </BrowserRouter>
-  </React.StrictMode>,
+   </React.StrictMode>,
 )
