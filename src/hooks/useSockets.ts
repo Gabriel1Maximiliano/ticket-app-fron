@@ -2,10 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import io from "socket.io-client";
 
 
-interface Props {
-    serverPath:string;
-}
-export const useSockets = ( { serverPath }:Props ) => {
+
+
+
+export const useSockets = (   serverPath:any  ) => {
 
     const socket = useMemo(() =>io(serverPath, {transports: ["websocket"],}) , [serverPath]); 
     const [onLine, setOnLine] = useState<boolean>(false);

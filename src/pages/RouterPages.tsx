@@ -1,27 +1,25 @@
 import React, { useContext, useState } from 'react';
-import { UploadOutlined, UserOutlined,VideoCameraOutlined,} from '@ant-design/icons';
-import { Layout, Menu,theme  } from 'antd';
+ import { UploadOutlined, UserOutlined,VideoCameraOutlined,} from '@ant-design/icons';
 
-const {  Sider, Content } = Layout;
+ import { Layout, Menu,theme  } from 'antd';
+ const {  Sider, Content } = Layout;
 
-import { Routes, Route, NavLink } from "react-router-dom";
-import { GetInto } from './GetInto';
-import { Queue } from './Queue';
-import { CreateTicket } from './CreateTicket';
-import { Desktop } from './Desktop';
-import { UIContext } from '../context/UIContext';
+ import { Routes, Route, NavLink } from "react-router-dom";
+ import { GetInto } from './GetInto';
+ import { Queue } from './Queue';
+ import { CreateTicket } from './CreateTicket';
+ import { Desktop } from './Desktop';
+ import { UIContext } from '../context/UIContext';
 
 
 
 export const RouterPages:React.FC<any>  = ( props:any ):ReturnType<React.FC> => {
 
-  const { token: { colorBgContainer } } = theme.useToken();
+   //const { token: { colorBgContainer } } = theme.useToken();
 
-  const  { hideMenu } = useContext( UIContext );
+   const  { hideMenu } = useContext( UIContext );
 
-  return ( 
-
-
+  return (    
     <Layout style={{ height:'100vh' }} >
     <Sider 
     breakpoint='md'
@@ -59,7 +57,7 @@ export const RouterPages:React.FC<any>  = ( props:any ):ReturnType<React.FC> => 
           margin: '24px 16px',
           padding: 24,
           minHeight: 280,
-          background:colorBgContainer,
+          background:'white',
         }}
       >
         <Routes>
@@ -74,6 +72,6 @@ export const RouterPages:React.FC<any>  = ( props:any ):ReturnType<React.FC> => 
     </Layout>
   </Layout>
              
-   
-  )
+
+   )
 }

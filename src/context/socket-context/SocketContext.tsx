@@ -1,4 +1,12 @@
 import { createContext } from "react";
 
 
-export const SocketContext = createContext<any>({});
+
+
+interface Context {
+    socket:any;
+    onLine:boolean;
+}
+
+
+export const SocketContext = createContext({ } as Context);

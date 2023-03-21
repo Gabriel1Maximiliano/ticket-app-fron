@@ -16,6 +16,6 @@ export const useHideMenu = ( { hide }:HookProps ) => {
             handleShowMenu();
         }
 
-    },[ hide,handleShowMenu,handleShowMenu ])
+    },[ hide ])
   
 }
