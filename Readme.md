@@ -34,6 +34,13 @@ Ejecutar el comando
 yarn 
 
 ```
+
+Luego el comando 
+
+```
+yarn dev
+
+```
 Deberías ver en tu terminal lo siguiente 
 
 ```
