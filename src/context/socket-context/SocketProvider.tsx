@@ -12,9 +12,10 @@ interface SocketContextProps {
 const serverPath =import.meta.env.VITE_REACT_APP_URL_API
 
 
-export const SocketProvider = ({ children }: any) => {
+export const SocketProvider = ({ children }: SocketContextProps) => {
 
   const { socket, onLine } = useSockets(serverPath );
+  
   
   return (
     <SocketContext.Provider value={{ socket, onLine }}>
