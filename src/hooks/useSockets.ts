@@ -7,7 +7,7 @@ import io from "socket.io-client";
 
 export const useSockets = (   serverPath:any  ) => {
 
-    const socket = useMemo(() =>io(serverPath, {transports: ["websocket"],}) , [serverPath]); 
+    const socket = useMemo(() =>io(serverPath, {transports: ["websocket","polling","flashsocket"],}) , [serverPath]); 
     const [onLine, setOnLine] = useState<boolean>(false);
     useEffect(() => {
     

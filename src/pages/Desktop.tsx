@@ -1,20 +1,26 @@
 import { CloseCircleOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import { Button, Col, Divider, Row,Typography } from 'antd'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { getUserStorage } from '../helpers';
 import { useHideMenu } from '../hooks/useHideMenu';
+import { SocketContext } from '../context/socket-context/SocketContext';
+import { Ticket } from '../interfaces/interfaces';
 
 
 const { Text, Title } = Typography;
 
 export const Desktop = () => {
 
+  const { socket } = useContext( SocketContext );
+
   useHideMenu( { hide:false } );
 
   const navigate = useNavigate();
 
   const [user, setUser] = useState<any>( getUserStorage() );
+
+  const [ticket, setTicket] = useState<any>( null );
   
   if( !user.agente || !user.escritorio ){
 
@@ -22,11 +28,17 @@ export const Desktop = () => {
   }
 
   const handleNextTicket =()=>{
-    console.log('siguiente ticket')
+  
+
+    socket.emit('next-ticket-to-work', user , ( ticket:Ticket ) => {
+      setTicket( ticket )
+      
+    } );
+
   }
 
   const handleExit = ()=>{
-    console.log('entre al salir')
+  
     localStorage.clear();
     navigate('desktop')
 
@@ -51,18 +63,22 @@ export const Desktop = () => {
       </Col>
     </Row>
     <Divider />
-
-    <Row>
+{
+  ticket && (
+<Row>
       <Col>
         <Text>Atendiendo ticket número: </Text>
         <Text 
         style={{ fontSize:30 }} 
         type='danger'
         
-        >55</Text>
+        >{ ticket.number }</Text>
       </Col>
     </Row>
-    <Row>
+
+  )
+}
+        <Row>
       <Col offset={ 18 } >
         <Button
         onClick={ handleNextTicket }

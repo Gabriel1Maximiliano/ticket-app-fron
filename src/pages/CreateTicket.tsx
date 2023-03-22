@@ -14,7 +14,7 @@ export const CreateTicket = () => {
   const [ticket, setTicket] = useState<Ticket>();
 
   const  { socket,onLine } = useContext( SocketContext );
-  console.log({socket,onLine})
+
 
   useHideMenu( { hide:true } );
   
